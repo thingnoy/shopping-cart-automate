@@ -22,7 +22,7 @@ pipeline {
         stage('run api test') {
             steps {
                 sh label: '', script: '''cd test/api
-                robot checkout-success-template.robot'''
+                robot get-product-success.robot'''
             }
             post {
                 always {
