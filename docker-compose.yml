@@ -1,0 +1,76 @@
+version: "3.8"
+
+services:
+  shopping-cart-db:
+    image: mysql:8.0.22
+    container_name: shopping-cart-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: toy
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db-with-init-data/:/docker-entrypoint-initdb.d/
+
+  payment-service:
+    image: andyrbell/mountebank:2.3.2
+    container_name: payment-service
+    volumes:
+      - ./payment-service/imposters.json:/imposters/imposters.json
+    ports:
+      - '8081:80'
+    command:
+      [
+        'mb',
+        'start',
+        '--configfile',
+        '/imposters/imposters.json',
+        '--allowInjection',
+      ]
+
+  shipping-service:
+    image: andyrbell/mountebank:2.3.2
+    container_name: shipping-service
+    volumes:
+      - ./shipping-service/imposters.json:/imposters/imposters.json
+    ports:
+      - '8082:80'
+    command:
+      [
+        'mb',
+        'start',
+        '--configfile',
+        '/imposters/imposters.json',
+        '--allowInjection',
+      ]
+
+  shopping-service:
+    image: shopping-service:0.0.1
+    container_name: shopping-service
+    restart: always
+    build: 
+      context: shopping-service
+    environment:
+      - TEST_MODE=true
+      - BANK_GATEWAY=payment-service
+      - SHIPPING_GATEWAY=shipping-service
+      - DBCONNECTION=root:password@(shopping-cart-db:3306)/toy
+    ports:
+      - '8000:8000'
+    depends_on:
+      - shopping-cart-db
+
+  shopping-nginx:
+    image: nginx:1.19.3-alpine
+    container_name: shopping-nginx
+    restart: always
+    volumes:
+        - ./ui:/etc/nginx/html:ro
+        - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - shopping-service
+    ports:
+      - "80:80"
+  
+
