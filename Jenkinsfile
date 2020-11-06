@@ -19,5 +19,18 @@ pipeline {
                 sh label: '', script: 'docker-compose up -d --build --force-recreate'
             }
         }
+        stage('run api test') {
+            steps {
+                sh label: '', script: '''cd test/api
+                robot checkout-success-template.robot'''
+            }
+            post {
+                always {
+                    robot outputPath: 'test/api', unstableThreshold: 100.0
+                    sh label: '', script: 'docker-compose down'
+                }
+                
+            }
+        }
     }
 }

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.7.4 on darwin)" generated="20201106 11:59:10.181" rpa="false">
+<suite id="s1" name="Checkout-Success-Template" source="/Users/captainamerica/skypart/shopping-cart-automate/test/api/checkout-success-template.robot">
+<kw name="Create Session" library="RequestsLibrary" type="setup">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${toy_store}</arg>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20201106 11:59:10.881" level="INFO">Creating Session using : alias=, url=http://localhost:8000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20201106 11:59:10.881" endtime="20201106 11:59:10.882"></status>
+</kw>
+<test id="s1-t1" name="Diner Set">
+<kw name="Checkout Product">
+<arguments>
+<arg>43 Piece dinner Set</arg>
+<arg>1</arg>
+<arg>14.95</arg>
+<arg>วันเวลาที่ชำระเงิน 1/3/2020 13:30:00 หมายเลขคำสั่งซื้อ \${order_id} คุณสามารถติดตามสินค้าผ่านช่องทาง Kerry หมายเลข 1785261900</arg>
+</arguments>
+<kw name="Get Product List">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${toy_store}</arg>
+<arg>/mockTime/01032020T13:30:00</arg>
+</arguments>
+<msg timestamp="20201106 11:59:10.936" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x108cea090&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /mockTime/01032020T13:30:00</msg>
+<msg timestamp="20201106 11:59:11.138" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x109e51c50&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /mockTime/01032020T13:30:00</msg>
+<msg timestamp="20201106 11:59:11.543" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x109e51290&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /mockTime/01032020T13:30:00</msg>
+<msg timestamp="20201106 11:59:11.578" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /mockTime/01032020T13:30:00 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x109e51b50&gt;: Failed to establish a new connection: [Errno 61] Connection refused'))</msg>
+<status status="FAIL" starttime="20201106 11:59:10.883" endtime="20201106 11:59:11.578"></status>
+</kw>
+<status status="FAIL" starttime="20201106 11:59:10.883" endtime="20201106 11:59:11.578"></status>
+</kw>
+<status status="FAIL" starttime="20201106 11:59:10.882" endtime="20201106 11:59:11.579"></status>
+</kw>
+<status status="FAIL" starttime="20201106 11:59:10.882" endtime="20201106 11:59:11.579" critical="yes">ConnectionError: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /mockTime/01032020T13:30:00 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x109e51b50&gt;: Failed to establish a new connection: [Errno 61] Connection refused'))</status>
+</test>
+<test id="s1-t2" name="Bicycle">
+<kw name="Checkout Product">
+<arguments>
+<arg>Balance Training Bicycle</arg>
+<arg>2</arg>
+<arg>241.90</arg>
+<arg>วันเวลาที่ชำระเงิน 1/3/2020 13:30:00 หมายเลขคำสั่งซื้อ \${order_id} คุณสามารถติดตามสินค้าผ่านช่องทาง Kerry หมายเลข 1785261900</arg>
+</arguments>
+<kw name="Get Product List">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${toy_store}</arg>
+<arg>/mockTime/01032020T13:30:00</arg>
+</arguments>
+<msg timestamp="20201106 11:59:11.583" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10a284b50&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /mockTime/01032020T13:30:00</msg>
+<msg timestamp="20201106 11:59:11.788" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10a28c150&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /mockTime/01032020T13:30:00</msg>
+<msg timestamp="20201106 11:59:12.192" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10a28c5d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /mockTime/01032020T13:30:00</msg>
+<msg timestamp="20201106 11:59:12.194" level="FAIL">ConnectionError: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /mockTime/01032020T13:30:00 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10a28cad0&gt;: Failed to establish a new connection: [Errno 61] Connection refused'))</msg>
+<status status="FAIL" starttime="20201106 11:59:11.581" endtime="20201106 11:59:12.194"></status>
+</kw>
+<status status="FAIL" starttime="20201106 11:59:11.580" endtime="20201106 11:59:12.194"></status>
+</kw>
+<status status="FAIL" starttime="20201106 11:59:11.580" endtime="20201106 11:59:12.194"></status>
+</kw>
+<status status="FAIL" starttime="20201106 11:59:11.579" endtime="20201106 11:59:12.194" critical="yes">ConnectionError: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /mockTime/01032020T13:30:00 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10a28cad0&gt;: Failed to establish a new connection: [Errno 61] Connection refused'))</status>
+</test>
+<kw name="Delete All Sessions" library="RequestsLibrary" type="teardown">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20201106 11:59:12.196" level="INFO">Delete All Sessions</msg>
+<status status="PASS" starttime="20201106 11:59:12.195" endtime="20201106 11:59:12.196"></status>
+</kw>
+<status status="FAIL" starttime="20201106 11:59:10.182" endtime="20201106 11:59:12.196"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2">Critical Tests</stat>
+<stat pass="0" fail="2">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="2" id="s1" name="Checkout-Success-Template">Checkout-Success-Template</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20201106 11:59:10.936" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x108cea090&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /mockTime/01032020T13:30:00</msg>
+<msg timestamp="20201106 11:59:11.138" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x109e51c50&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /mockTime/01032020T13:30:00</msg>
+<msg timestamp="20201106 11:59:11.543" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x109e51290&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /mockTime/01032020T13:30:00</msg>
+<msg timestamp="20201106 11:59:11.583" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10a284b50&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /mockTime/01032020T13:30:00</msg>
+<msg timestamp="20201106 11:59:11.788" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10a28c150&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /mockTime/01032020T13:30:00</msg>
+<msg timestamp="20201106 11:59:12.192" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10a28c5d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /mockTime/01032020T13:30:00</msg>
+</errors>
+</robot>
